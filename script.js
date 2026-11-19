@@ -14,6 +14,7 @@ const loadInterval = setInterval(() => {
 
         setTimeout(() => {
             if (preloader) preloader.classList.add("fade-out");
+            document.body.classList.add("page-loaded");
         }, 320);
     } else {
         if (preloaderBar) preloaderBar.style.width = `${progress}%`;
@@ -29,6 +30,7 @@ window.addEventListener("load", () => {
         if (preloaderPercent) preloaderPercent.textContent = "100%";
         setTimeout(() => {
             if (preloader) preloader.classList.add("fade-out");
+            document.body.classList.add("page-loaded");
         }, 250);
     }
 });
@@ -209,7 +211,7 @@ const scene = new THREE.Scene();
 const isMobile = window.innerWidth <= 768;
 
 const camera = new THREE.PerspectiveCamera(isMobile ? 50 : 54, width / height, 0.1, 1000);
-camera.position.set(0, 0, isMobile ? 5.2 : 3.65); // Brought close for prominent scale
+camera.position.set(0, 0, isMobile ? 5.2 : 3.65);
 
 const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
 renderer.setSize(width, height);
@@ -217,7 +219,7 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
 const cylinderRadius = isMobile ? 4.8 : 6.6;
 const cardWidthAngle = (2 * Math.PI) / totalCards;
-const cardHeight = isMobile ? 2.85 : 3.7; // Wide landscape height
+const cardHeight = isMobile ? 2.85 : 3.7;
 const arcCoverage = cardWidthAngle * 0.94;
 
 function createCardTexture(data) {
